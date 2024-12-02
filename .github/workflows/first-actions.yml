@@ -1,0 +1,10 @@
+name: "First Actions Demo"  # Workflow Name
+on: push  # On Which Git Events did you want to perform Actions / Run Pipeline etc. [ Push, Pull]
+jobs: # Define Job under workflow 
+  first-job:  # Job Name  
+    runs-on: ubuntu-20.04   # Runners Env.
+    steps:  # Performs Actions / run command / triggered a things etc.
+      - name: "print greeting"
+        run: echo "Hello World!"  # run: use for run commands.
+      - name: "Print GoodBye"
+        run: echo "Done - Bye!"
