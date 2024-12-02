@@ -1,0 +1,15 @@
+name: Test Project
+on: push
+jobs:
+  test-job:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download Clone Code
+        uses: actions/checkout@v3
+      - name: Install npm Install
+        run: npm ci # like npm install
+      - name: Run Tests
+        run: npm test
+
+
+  
