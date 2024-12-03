@@ -1,0 +1,41 @@
+name: Test Project
+on: [push, workflow_dispatch] # Just use [ ] and wirte events type. workflow_dispatch -- will be mannualy triggerd by you.
+jobs:
+  test-job:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download Clone Code
+        uses: actions/checkout@v4
+      - name: Install NodeJS on Runner # By default its installed.
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install npm Install
+        working-directory: second-action-react
+        run: npm install # like npm install
+      - name: Run React
+        run: npm test
+        working-directory: second-action-react
+
+  deploy_job:
+  # Want to Run this job after run job test successfully first.
+  # Use needs: job_name.
+    needs: test-job
+    runs-on: ubuntu-20.04
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v4
+      - name: Install npm and dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Just npm install
+        run: npm ci
+        working-directory: second-action-react
+      - name: Build npm
+        run: npm run build
+        working-directory: second-action-react
+
+
+
+  
