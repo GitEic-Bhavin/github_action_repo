@@ -1,0 +1,8 @@
+name: Run github actino while Issue type Events occurs
+on: issues
+jobs:
+  test-issue-job:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Run issue while any issues creats.
+        run: echo "${{ toJSON(github) }}"
