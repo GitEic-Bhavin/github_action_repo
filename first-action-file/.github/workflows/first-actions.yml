@@ -9,4 +9,4 @@ jobs: # Define Job under workflow
       - name: "Print GoodBye"
         run: echo "Done - Bye!"
       - name: Download Clone Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
