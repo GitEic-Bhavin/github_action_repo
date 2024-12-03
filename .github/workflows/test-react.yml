@@ -12,7 +12,7 @@ jobs:
           node-version: 18
       - name: Install npm Install
         working-directory: ./second-action-react
-        run: npm ci # like npm install
+        run: npm install # like npm install
       - name: Run React
         run: npm run dev
 
