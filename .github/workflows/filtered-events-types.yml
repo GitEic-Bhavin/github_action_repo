@@ -1,4 +1,4 @@
-name: Test Project
+name: filters events pull for specific activity types only.
 on:
   workflow_dispatch: 
   pull_request: 
