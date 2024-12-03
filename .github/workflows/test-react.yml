@@ -13,8 +13,9 @@ jobs:
       - name: Install npm Install
         working-directory: second-action-react
         run: npm install # like npm install
-      # - name: Run React
-      #   run: npm run dev
+      - name: Run React
+        run: npm run dev
+        working-directory: second-action-react
 
 
   
