@@ -17,5 +17,20 @@ jobs:
         run: npm test
         working-directory: second-action-react
 
+  deploy_job:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v4
+      - name: Install npm and dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Just npm install
+        run: npm ci
+      - name: Build npm
+        run: npm run build
+
+
 
   
