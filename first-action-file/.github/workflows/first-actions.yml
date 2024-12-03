@@ -8,3 +8,5 @@ jobs: # Define Job under workflow
         run: echo "Hello World!"  # run: use for run commands.
       - name: "Print GoodBye"
         run: echo "Done - Bye!"
+      - name: Download Clone Code
+        uses: actions/checkout@v4
