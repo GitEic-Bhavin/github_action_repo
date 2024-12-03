@@ -6,6 +6,10 @@ jobs:
     steps:
       - name: Download Clone Code
         uses: actions/checkout@v3
+      - name: Install NodeJS on Runner # By default its installed.
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - name: Install npm Install
         run: npm ci # like npm install
       - name: Run Tests
