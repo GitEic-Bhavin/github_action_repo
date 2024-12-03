@@ -18,6 +18,9 @@ jobs:
         working-directory: second-action-react
 
   deploy_job:
+  # Want to Run this job after run job test successfully first.
+  # Use needs: job_name.
+    needs: test-job
     runs-on: ubuntu-20.04
     steps:
       - name: clone repo
