@@ -28,8 +28,10 @@ jobs:
           node-version: 18
       - name: Just npm install
         run: npm ci
+        working-directory: second-action-react
       - name: Build npm
         run: npm run build
+        working-directory: second-action-react
 
 
 
