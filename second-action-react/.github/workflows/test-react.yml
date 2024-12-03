@@ -1,8 +1,5 @@
 name: Test Project
-on: 
-  push: 
-    branches: 
-      - master
+on: push
 jobs:
   test-job:
     runs-on: ubuntu-20.04
