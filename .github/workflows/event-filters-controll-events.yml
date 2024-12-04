@@ -1,0 +1,77 @@
+# Events filters
+# if your events is push or pull_request -- bydefault it will work for all push events in all branches.
+# Want to controll triggers push events only for master or dev branch and not for all branch.
+# You can control by event filters.
+
+# use branches:
+#       - main
+#       - feature
+
+# To run workflow in all branches but exept/ignore the list of branch.
+# use branches_ignore:
+#       - deveopers
+#       - main
+
+# If push or whatever mentioned events is triggers and make changes in specific path or files then triggres workflow.
+# use paths:
+#       - **.js
+
+# use paths_ignore:
+#       - first-project
+
+name: Control Events triggers on specific branches only.
+on:
+  workflow_dispatch: 
+  pull_request: 
+    types:  # Just use types for filters the pull requests events like, pull request while pull will be opened or closed.
+    # if you dont specify filtered pull requests all activity types under pull will be triggers.
+      - opened
+  push:       # triggers workflows while push events happens only for master branch.
+    branches:
+      - master
+    # paths-ignore: 
+    #   - .github/workflows/fi*
+    #   - .github/workflows/test-*
+    #   - .github/workflows/run-*
+      # OR
+    paths:    # triggres workflows while push events happens in specific folder or file in master branch.
+      - .github/workflows/event-filters-controll-events.yml
+jobs:
+  test-job:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download Clone Code
+        uses: actions/checkout@v4
+      - name: Install NodeJS on Runner # By default its installed.
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install npm Install
+        working-directory: second-action-react
+        run: npm install # like npm install
+      - name: Run React
+        run: npm test
+        working-directory: second-action-react
+
+  deploy_job:
+  # Want to Run this job after run job test successfully first.
+  # Use needs: job_name.
+    needs: test-job
+    runs-on: ubuntu-20.04
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v4
+      - name: Install npm and dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Just npm install
+        run: npm ci
+        working-directory: second-action-react
+      - name: Build npm
+        run: npm run build
+        working-directory: second-action-react
+
+
+
+  
