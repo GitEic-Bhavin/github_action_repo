@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Download Clone Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: Install NodeJS on Runner # By default its installed.
         uses: actions/setup-node@v3
         with:
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: clone repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: Install npm and dependencies
         uses: actions/setup-node@v4
         with:
