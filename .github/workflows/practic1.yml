@@ -1,0 +1,11 @@
+name: my first pipeline
+on: [ push, workflow_dispatch]
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: update repo
+        run: sudo apt-get update -y
+      - name: install nginx
+        run: sudo apt-get install nginx -y
+  

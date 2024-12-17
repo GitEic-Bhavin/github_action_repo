@@ -11,7 +11,7 @@
 name: Skip Workflows for demo
 on:
   workflow_dispatch: 
-  pull_request: 
+  pull_request:  
     types:  # Just use types for filters the pull requests events like, pull request while pull will be opened or closed.
     # if you dont specify filtered pull requests all activity types under pull will be triggers.
       - opened
