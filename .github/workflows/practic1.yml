@@ -17,4 +17,5 @@ jobs:
         run: | 
           cat /var/www/html/index.html
           cat /etc/os-release
-          curl ipconfig.io
+          ip=$(curl ipconfig.io)
+          cat $ip
