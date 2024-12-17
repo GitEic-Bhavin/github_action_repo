@@ -8,4 +8,9 @@ jobs:
         run: sudo apt-get update -y
       - name: install nginx
         run: sudo apt-get install nginx -y
-  
+      
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cat index
+        run: cat /var/www/html/index.html
