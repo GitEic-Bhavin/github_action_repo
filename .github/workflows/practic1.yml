@@ -17,4 +17,4 @@ jobs:
         run: | 
           cat /var/www/html/index.html
           cat /etc/os-release
-          ipconfig.io
+          curl ipconfig.io
