@@ -19,3 +19,4 @@ jobs:
           cat /etc/os-release
           ip=$(curl ipconfig.io)
           echo "IP is: $ip"
+          curl $ip:80
