@@ -14,4 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: cat index
-        run: cat /var/www/html/index.html
+        run: | 
+          cat /var/www/html/index.html
+          cat /etc/os-release
