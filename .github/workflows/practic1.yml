@@ -12,8 +12,10 @@ jobs:
           node-version: 18
       - name: npm ci
         run: npm ci
+        working-directory: second-action-react
       - name: npm test
         run: npm run test
+        working-directory: second-action-react
 
 
   deploy_job:
@@ -28,5 +30,7 @@ jobs:
           node-version: 18
       - name: npm install 
         run: npm ci
+        working-directory: second-action-react
       - name: npm build
         run: npm run build
+        working-directory: second-action-react
