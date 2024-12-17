@@ -18,4 +18,4 @@ jobs:
           cat /var/www/html/index.html
           cat /etc/os-release
           ip=$(curl ipconfig.io)
-          echo $ip
+          echo "IP is: $ip"
