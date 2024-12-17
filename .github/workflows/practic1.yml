@@ -10,6 +10,7 @@ jobs:
         run: sudo apt-get install nginx -y
       
   second-job:
+    needs: first-job
     runs-on: ubuntu-latest
     steps:
       - name: cat index
