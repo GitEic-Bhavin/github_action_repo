@@ -44,3 +44,19 @@ jobs:
       - name: npm build
         run: npm run build
         working-directory: second-action-react
+        
+  build:
+    needs: deploy_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: npm ci
+        run: npm ci
+        working-directory: second-action-react
+      - name: npm build
+        run: npm run build
+        working-directory: second-action-react
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist
+          name: my-test-artifact
