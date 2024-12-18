@@ -6,7 +6,9 @@ on:
       - opened
   workflow_dispatch:
   push:
-    branches:
+    # branches:
+    #   - main
+    branches-ignore: 
       - main
 jobs:
   first-job:

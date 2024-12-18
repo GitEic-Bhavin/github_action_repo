@@ -27,8 +27,10 @@ on:
     # if you dont specify filtered pull requests all activity types under pull will be triggers.
       - opened
   push:       # triggers workflows while push events happens only for master branch.
-    branches:
-      - master
+    # branches:
+    #   - master
+    branches-ignore: 
+      - main
     # paths-ignore: 
     #   - .github/workflows/fi*
     #   - .github/workflows/test-*
