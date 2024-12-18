@@ -37,7 +37,7 @@ on:
     #   - .github/workflows/run-*
       # OR
     paths:    # triggres workflows while push events happens in specific folder or file in master branch.
-      - .github/workflows/event-filters-controll-events.yml
+      - .github/workflows/*
 jobs:
   test-job:
     runs-on: ubuntu-20.04
