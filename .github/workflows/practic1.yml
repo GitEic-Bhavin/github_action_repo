@@ -1,5 +1,11 @@
 name: my first pipeline
-on: [ push, workflow_dispatch]
+# on: [ push, workflow_dispatch]
+on:
+  issues:
+    types: 
+      - opened
+  workflow_dispatch:
+  push:
 jobs:
   first-job:
     runs-on: ubuntu-latest
