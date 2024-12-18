@@ -9,7 +9,7 @@ on:
     # branches:
     #   - main
     branches-ignore: 
-      - main
+      - main 
 jobs:
   first-job:
     runs-on: ubuntu-latest
