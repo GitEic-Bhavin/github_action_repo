@@ -49,6 +49,8 @@ jobs:
     needs: deploy_job
     runs-on: ubuntu-latest
     steps:
+      - name: clone repo
+        uses: actions/checkout@v4
       - name: npm ci
         run: npm ci
         working-directory: second-action-react
@@ -59,4 +61,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: dist
-          name: my-test-artifact
+          name: my-test-artifact 
