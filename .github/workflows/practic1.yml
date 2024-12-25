@@ -58,6 +58,7 @@ jobs:
         run: npm run build
         working-directory: second-action-react
       - name: show output of dest dir
+        working-directory: second-action-react
         # run: find /dist/assets/*.js -type f -execdir echo '{}' ';'
         # This will find *.js file in /dist/assest dir, and execute echo command and show it into {}.
         # run: find /dist/assets/*js -type f -execdir echo 'output-var={}' ';'
