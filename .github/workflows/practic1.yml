@@ -145,7 +145,7 @@ jobs:
           name: my-artifact
           path: second-action-react/dist/
       - name: ensure artifact was uploaded
-        run: ls -ltr second-action-react/dist/
+        run: ls -ltr second-action-react/
         if: success() && steps.upload.outcome == 'success'
 
   downloaded_artifact:
@@ -160,7 +160,7 @@ jobs:
         with:
           name: my-artifact
       - name: show downloaed artifact
-        run: ls -ltr second-action-react/dist/
+        run: ls -ltr second-action-react/
         # if: success() && steps.Download.outcome == 'success'
 
     
