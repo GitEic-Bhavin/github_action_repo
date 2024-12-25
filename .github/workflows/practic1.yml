@@ -96,7 +96,7 @@ jobs:
       - name: clone repo
         uses: actions/checkout@v3
       - name: npm test
-        run: npm test
+        run: npm run test
         working-directory: second-action-react
   build:
     needs: test
