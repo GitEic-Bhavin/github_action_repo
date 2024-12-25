@@ -151,6 +151,9 @@ jobs:
   downloaded_artifact:
     needs: upload_artifacts
     runs-on: ubuntu-latest
+    # outputs:
+    #   test-output:
+
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
@@ -160,7 +163,11 @@ jobs:
         with:
           name: my-artifact
       - name: show downloaed artifact
-        run: ls -ltr second-action-react/
+        run: ls -ltr second-action-react/ >> $GITHUB_OUTPUT
+        id: output-run
         # if: success() && steps.Download.outcome == 'success'
+      - name: Print output from previous step
+        run: |
+          echo "Output from output-run step: ${{ steps.output-run.outputs.test-output }}"
 
     
