@@ -103,7 +103,7 @@ jobs:
         working-directory: second-action-react
   build:
     needs: test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: clone repo
         uses: actions/checkout@v3
