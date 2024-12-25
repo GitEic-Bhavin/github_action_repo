@@ -91,7 +91,7 @@ jobs:
           node-version: 18
   test:
     needs: create
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: clone repo
         uses: actions/checkout@v3
