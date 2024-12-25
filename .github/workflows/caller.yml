@@ -1,0 +1,15 @@
+name: xy0
+on: push
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      name: "Alice"
+
+  display-output:
+    needs: call-reusable
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display greeting
+        run: |
+          echo "Greeting: ${{ needs.call-reusable.outputs.greeting }}"

@@ -1,0 +1,17 @@
+name: Input
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+    outputs:
+      greeting:
+        description: "Generated greeting"
+        value: true
+jobs:
+  generate-greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate greeting
+        run: echo "greeting=Hello, ${{ inputs.name }}" >> $GITHUB_OUTPUT
