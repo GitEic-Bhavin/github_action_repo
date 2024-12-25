@@ -184,6 +184,16 @@ jobs:
         run: npm ci
         working-directory: second-action-react
 
+  use-cached:
+    needs: cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: npm ci by cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: retrive-cache-key-${{ hashFiles('**/package-lock.json') }}
+
       # - name: Cache all npm steps.
       #   uses: actions/cache@v4
       #   with:
