@@ -59,11 +59,11 @@ jobs:
         working-directory: second-action-react
       - name: show output of dest dir
         working-directory: second-action-react
-        # run: find /dist/assets/*.js -type f -execdir echo '{}' ';'
+        run: find /dist/assets/*.js -type f -execdir echo '{}' ';'
         # This will find *.js file in /dist/assest dir, and execute echo command and show it into {}.
         # run: find /dist/assets/*js -type f -execdir echo 'output-var={}' ';'
         # This will store the output of find command into var named 'output-var' by echo.
-        run: find /dist/assets/*.js -type f -execdir echo 'output-var={}' >> $GITHUB_OUTPUT ';'
+        # run: find /dist/assets/*.js -type f -execdir echo 'output-var={}' >> $GITHUB_OUTPUT ';'
         # This will store output of var named 'output-var' into the
       - name: upload artifact
         uses: actions/upload-artifact@v4
