@@ -189,10 +189,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: npm ci by cache
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: retrive-cache-key-${{ hashFiles('**/package-lock.json') }}
+          key: my-cache-${{ hashFiles('**package-lock.json') }}
 
       # - name: Cache all npm steps.
       #   uses: actions/cache@v4
