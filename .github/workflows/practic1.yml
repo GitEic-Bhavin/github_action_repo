@@ -163,7 +163,7 @@ jobs:
         with:
           name: my-artifact
       - name: show downloaed artifact
-        run: ls -ltr second-action-react/ >> $GITHUB_OUTPUT
+        run: ls -ltr second-action-react/
         id: output-run
         # if: success() && steps.Download.outcome == 'success'
       - name: Print output from previous step
