@@ -8,6 +8,13 @@
 # Only that workflows will not triggers.
 # ex. git commit -m "Skip Workflow for demo [skip ci]"
 
+# Other key word are
+# [skip ci]
+# [ci skip]
+# [no ci]
+# [skip actions]
+# [actions skip]
+
 name: Skip Workflows for demo
 on:
   workflow_dispatch: 

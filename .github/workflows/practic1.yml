@@ -78,7 +78,14 @@
         
 #### TEST
 name: my-first-pipeline
-on: push
+on: 
+  pull_request:
+    types:
+      - opened
+      - closed
+  push:
+    branches: 
+      - master
 jobs:
   create:
     runs-on: ubuntu-latest
@@ -94,7 +101,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: clone repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: npm install
         run: npm ci
         working-directory: second-action-react
@@ -118,3 +125,25 @@ jobs:
         working-directory: second-action-react
       - name: see workflows datains once.
         run: echo "${{ toJson(github) }}"
+
+  upload_artifacts:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v3
+      - name: npm install
+        run: npm ci
+        working-directory: second-action-react
+      - name: build npm
+        working-directory: second-action-react
+        run: npm run build
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        id: upload
+        with:
+          name: my-artifact
+          path: second-action-react/dist/
+      - name: ensure artifact was uploaded
+        run: ls -ltr second-action-react/dist/
+        if: success() && steps.upload.outcome == 'success'
