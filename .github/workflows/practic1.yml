@@ -63,6 +63,7 @@ jobs:
         # run: find /dist/assest/*js -type f -execdir echo 'output-var={}' ';'
         # This will store the output of find command into var named 'output-var' by echo.
         run: find /dist/assest/*.js -type f -execdir echo 'output-var={}' >> $GITHUB_OUTPUT ';'
+        working-directory: second-action-react
         # This will store output of var named 'output-var' into the
       - name: upload artifact
         uses: actions/upload-artifact@v4
