@@ -1,78 +1,108 @@
-name: my first pipeline
-# on: [ push, workflow_dispatch]
-on:
-  issues:
-    types: 
-      - opened
-  workflow_dispatch:
-  push:
-    # branches:
-    #   - main
-    branches-ignore: 
-      - main 
+# name: my first pipeline
+# # on: [ push, workflow_dispatch]
+# on:
+#   issues:
+#     types: 
+#       - opened
+#   workflow_dispatch:
+#   push:
+#     # branches:
+#     #   - main
+#     branches-ignore: 
+#       - main 
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: clone repo
+#         uses: actions/checkout@v4
+#       - name: install node 18
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 18
+#       - name: npm ci
+#         run: npm ci
+#         working-directory: second-action-react
+#       - name: npm test
+#         run: npm run test
+#         working-directory: second-action-react
+
+
+#   deploy_job:
+#     needs: first-job
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: clone repo
+#         uses: actions/checkout@v4
+#       - name: install npm
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 18
+#       - name: npm install 
+#         run: npm ci
+#         working-directory: second-action-react
+#       - name: npm build
+#         run: npm run build
+#         working-directory: second-action-react
+        
+#   build:
+#     needs: deploy_job
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: clone repo
+#         uses: actions/checkout@v4
+#       - name: npm ci
+#         run: npm ci
+#         working-directory: second-action-react
+#       - name: npm build
+#         run: npm run build
+#         working-directory: second-action-react
+#       - name: show output of dest dir
+#         working-directory: second-action-react
+#         # run: find dist/assets/*.js -type f -execdir echo '{}' ';'
+#         # This will find *.js file in /dist/assest dir, and execute echo command and show it into {}.
+#         # run: find dist/assets/*js -type f -execdir echo 'output-var={}' ';'
+#         # This will store the output of find command into var named 'output-var' by echo.
+#         run: | 
+#           find dist/assets/*.js -type f -execdir echo 'output-var={}' >> $GITHUB_OUTPUT ';'
+#           echo $GITHUB_OUTPUT
+
+#         # This will store output of var named 'output-var' into the
+#       - name: upload artifact
+#         uses: actions/upload-artifact@v4
+#         with:
+#           path: |
+#             dist
+#             second-action-react
+#           name: my-test-artifact 
+        
+#### TEST
+name: my-first-pipeline
+on: push
 jobs:
-  first-job:
+  create:
     runs-on: ubuntu-latest
     steps:
       - name: clone repo
-        uses: actions/checkout@v4
-      - name: install node 18
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: npm ci
-        run: npm ci
-        working-directory: second-action-react
-      - name: npm test
-        run: npm run test
-        working-directory: second-action-react
-
-
-  deploy_job:
-    needs: first-job
-    runs-on: ubuntu-latest
-    steps:
-      - name: clone repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: install npm
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: npm install 
-        run: npm ci
-        working-directory: second-action-react
-      - name: npm build
-        run: npm run build
-        working-directory: second-action-react
-        
-  build:
-    needs: deploy_job
-    runs-on: ubuntu-latest
+  test:
+    needs: create
+    runs-on: ubuntu-22.04
     steps:
-      - name: clone repo
-        uses: actions/checkout@v4
-      - name: npm ci
-        run: npm ci
+      - name: npm test
+        run: npm test
         working-directory: second-action-react
-      - name: npm build
+  build:
+    needs: test
+    runs-on: ubuntu-18.04
+    steps:
+      - name: build npm
+        working-directory: second-action-react
         run: npm run build
+      - name: ensure dist directory created
+        run: find dist/assets/*.js
         working-directory: second-action-react
-      - name: show output of dest dir
-        working-directory: second-action-react
-        # run: find dist/assets/*.js -type f -execdir echo '{}' ';'
-        # This will find *.js file in /dist/assest dir, and execute echo command and show it into {}.
-        # run: find dist/assets/*js -type f -execdir echo 'output-var={}' ';'
-        # This will store the output of find command into var named 'output-var' by echo.
-        run: | 
-          find dist/assets/*.js -type f -execdir echo 'output-var={}' >> $GITHUB_OUTPUT ';'
-          echo $GITHUB_OUTPUT
-
-        # This will store output of var named 'output-var' into the
-      - name: upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          path: |
-            dist
-            second-action-react
-          name: my-test-artifact 
-        

@@ -1,4 +1,4 @@
-name: xy0
+name: show input from workflow_call
 on: push
 jobs:
   call-reusable:
