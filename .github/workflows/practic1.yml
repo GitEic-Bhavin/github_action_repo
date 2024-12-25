@@ -159,6 +159,6 @@ jobs:
           name: my-artifact
       - name: show downloaed artifact
         run: ls -ltr second-action-react/dist/
-        if: success() && steps.Download.outcome == 'success'
+        # if: success() && steps.Download.outcome == 'success'
 
     
