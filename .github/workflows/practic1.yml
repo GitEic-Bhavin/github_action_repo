@@ -147,3 +147,15 @@ jobs:
       - name: ensure artifact was uploaded
         run: ls -ltr second-action-react/dist/
         if: success() && steps.upload.outcome == 'success'
+
+  downloaded_artifact:
+    needs: upload_artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: downloaded artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+          path: downloads
+
+    
