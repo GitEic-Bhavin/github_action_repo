@@ -93,6 +93,8 @@ jobs:
     needs: create
     runs-on: ubuntu-22.04
     steps:
+      - name: clone repo
+        uses: actions/checkout@v3
       - name: npm test
         run: npm test
         working-directory: second-action-react
@@ -100,6 +102,8 @@ jobs:
     needs: test
     runs-on: ubuntu-18.04
     steps:
+      - name: clone repo
+        uses: actions/checkout@v3
       - name: build npm
         working-directory: second-action-react
         run: npm run build
