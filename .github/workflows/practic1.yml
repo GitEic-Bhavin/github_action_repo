@@ -116,3 +116,5 @@ jobs:
       - name: ensure dist directory created
         run: find dist/assets/*.js
         working-directory: second-action-react
+      - name: see workflows datains once.
+        run: echo ${{ toJson(github) }}
