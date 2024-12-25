@@ -95,6 +95,8 @@ jobs:
     steps:
       - name: clone repo
         uses: actions/checkout@v3
+      - name: npm install
+        run: npm ci
       - name: npm test
         run: npm run test
         working-directory: second-action-react
@@ -104,6 +106,8 @@ jobs:
     steps:
       - name: clone repo
         uses: actions/checkout@v3
+      - name: npm install
+        run: npm ci
       - name: build npm
         working-directory: second-action-react
         run: npm run build
