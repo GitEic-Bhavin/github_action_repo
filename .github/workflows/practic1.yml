@@ -154,7 +154,11 @@ jobs:
     steps:
       - name: downloaded artifact
         uses: actions/download-artifact@v4
+        id: Download
         with:
           name: my-artifact
+      - name: show downloaed artifact
+        run: ls -ltr second-action-react/dist/
+        if: success() && steps.Download == 'success'
 
     
