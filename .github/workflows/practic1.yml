@@ -95,7 +95,7 @@ jobs:
       - name: install npm
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 18.1244
   test:
     needs: create
     runs-on: ubuntu-latest
