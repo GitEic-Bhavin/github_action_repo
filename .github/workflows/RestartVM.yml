@@ -1,0 +1,20 @@
+# Create workflow for restart VM in azure on push evnets.
+
+name: Restart VM
+on: push
+jobs:
+  restart-vm:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Azure login
+        uses: azure/login@v2
+        # with:
+        #   creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: set up Azure CLI to access my VM
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az account show
+            az storage -h
